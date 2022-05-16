@@ -1,19 +1,12 @@
 const router = require('express').Router();
 const { notes } = require('../../data/db.json');
+const { validateNote, createNewNote }  = require('../../lib/notes')
 
 router.get('/notes', (req, res) => {
     let results = notes;
     res.json(results)
 });
 
-router.get('/notes/:id', (req, res) => {
-    const result = findById(req.params.id, notes);
-    if (result) {
-        res.json(result);
-    } else {
-        res.sendStatus(404);
-    }
-});
 
 router.post('/notes', (req, res) => {
     // set id based on what the next index of the array will be
