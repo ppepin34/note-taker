@@ -1,12 +1,19 @@
-[
-  {
-    "title": "Test Title",
-    "text": "Test text",
-    "id": "1"
-  },
-  {
-    "title": "That thing",
-    "text": "That thing to do",
-    "id": "2"
-  }
-]
+{
+  "notes": [
+    {
+      "title": "Test Title",
+      "text": "Test text",
+      "id": "0"
+    },
+    {
+      "title": "That thing",
+      "text": "That thing to do",
+      "id": "1"
+    },
+    {
+      "title": "finish the assignment",
+      "text": "the assignment needs to be done",
+      "id": "2"
+    }
+  ]
+}
