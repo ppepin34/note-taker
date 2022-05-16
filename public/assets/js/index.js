@@ -11,7 +11,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
-
+console.table(noteList);
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
@@ -31,7 +31,19 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  })
+    .then(response => {
+      if (!response.ok) {
+        return alert('Error: ' + response.statusText);
+      }
+      // console.log(response.json())
+      console.log(response)
+      return response//.json();
+    })
+// .then(noteData => {
+//   console.log(noteData)
+// })
+// ;
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -40,7 +52,13 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  });
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert('Error: ' + response.statusText);
+    });
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -119,6 +137,7 @@ const handleRenderSaveBtn = () => {
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
+  // console.log(jsonNotes);
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
@@ -158,6 +177,7 @@ const renderNoteList = async (notes) => {
     noteListItems.push(createLi('No saved Notes', false));
   }
 
+  console.log(jsonNotes);
   jsonNotes.forEach((note) => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
@@ -168,6 +188,7 @@ const renderNoteList = async (notes) => {
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
+  console.table(noteList);
 };
 
 // Gets notes from the db and renders them to the sidebar
