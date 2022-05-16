@@ -25,15 +25,7 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     // get object that is to be deleted
     const deleteObj = findById(req.params.id, notes);
-    
-    // grab entire object and delete
-    const result = notes.filter(note => note !== deleteObj)
 
-    // map ids for each object to new index value
-    result.forEach(function(note, index) {
-        note.id = index
-    });
-
-    // rewrite json with objects having new ids
+    const result = deleteNote(deleteObj);
 })
 module.exports = router;
