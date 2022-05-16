@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const notes = require('./data/db.json');
+const apiRoutes = require('./routes/apiRoutes/notes')
+const htmlRoutes = require('./routes/htmlRoutes/index')
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,10 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 
-// initial api call
+// routes
+// app.get('/api', apiRoutes);
+// app.get('/', htmlRoutes);
 app.get('/api/notes', (req, res) => {
-    res.json(notes);
-});
+    let results = notes;
+    res.json(results)
+})
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}`);
