@@ -36,4 +36,7 @@
   - ppepin34@gmail.com
   - [github](github.com/ppepin34)
 
-  
+  ![image](https://user-images.githubusercontent.com/59454905/168722431-97dd2e59-b948-402e-bc9c-1de9ae178a52.png)
+  ![image](https://user-images.githubusercontent.com/59454905/168722472-264f0107-7f50-40cd-93c7-b25ce41558aa.png)
+
+
